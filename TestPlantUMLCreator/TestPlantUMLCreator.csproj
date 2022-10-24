@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\leoggehrer\CSTemplate\QuickTemplate\CommonBase\CommonBase.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -22,27 +22,32 @@ namespace TestPlantUMLCreator // Note: actual namespace depends on the project n
 
             var t1 = new Teacher { FirstName = "Gerhard", LastName = "Gehrer", Title = "DI" };
             var c1 = new Course { Teacher = t1, Designation = "Introduction to Programming", Description = "An introduction to programming with CSharp." };
+            var c2 = new Course { Teacher = t1, Designation = "Software Engineering", Description = "Software engineering with CSharp." };
             var s1 = new Student { FirstName = "Tobias", LastName = "Gehrer", Number = "IF23616" };
             var s2 = new Student { FirstName = "Hermann", LastName = "Meier", Number = "IF67616" };
+            var s3 = new Student { FirstName = "Karin", LastName = "Schön", Number = "IF67896" };
 
             t1.Courses.Add(c1);
+            t1.Courses.Add(c2);
 
-            c1.Students.Add(s1);
-            c1.Students.Add(s2);
-            s1.Courses.Add(c1);
-            s2.Courses.Add(c1);
+            s1.AddCourse(c1);
+            s2.AddCourse(c1);
 
-            CreateUMLObjectDiagram(ObjectDiagramFilePath, 1, new [] { c1 });
+            s3.AddCourse(c2);
+            s1.AddCourse(c2);
+            s2.AddCourse(c2);
 
-            Stack stack = new Stack();
+            CreateUMLObjectDiagram(ObjectDiagramFilePath, 30, new [] { c1, c2 });
 
-            CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
-            stack.Push(1);
-            CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
-            stack.Push(2);
-            CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
-            stack.Push(3);
-            CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
+            //Stack stack = new Stack();
+
+            //CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
+            //stack.Push(1);
+            //CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
+            //stack.Push(2);
+            //CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
+            //stack.Push(3);
+            //CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
 
         }
 
