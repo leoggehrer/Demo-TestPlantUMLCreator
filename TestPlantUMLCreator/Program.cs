@@ -14,7 +14,7 @@ namespace TestPlantUMLCreator // Note: actual namespace depends on the project n
             DiagramCreationFlags creationFlags = DiagramCreationFlags.TypeExtends
                                                  | DiagramCreationFlags.ClassMembers
                                                  | DiagramCreationFlags.InterfaceMembers
-                                                 | DiagramCreationFlags.InterfaceExtends 
+                                                 | DiagramCreationFlags.InterfaceExtends
                                                  //| DiagramCreationFlags.ImplementedInterfaces 
                                                  | DiagramCreationFlags.ClassRelations;
 
@@ -37,18 +37,23 @@ namespace TestPlantUMLCreator // Note: actual namespace depends on the project n
             s1.AddCourse(c2);
             s2.AddCourse(c2);
 
-            CreateUMLObjectDiagram(ObjectDiagramFilePath, 30, new [] { c1, c2 });
+            CreateUMLObjectDiagram(ObjectDiagramFilePath, 30, new[] { c1, c2 });
 
-            //Stack stack = new Stack();
+            Stack stack = new Stack();
 
-            //CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
-            //stack.Push(1);
-            //CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
-            //stack.Push(2);
-            //CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
-            //stack.Push(3);
-            //CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
-
+            for (int i = 0; i < 10; i++)
+            {
+                System.Threading.Thread.Sleep(2000);
+                stack.Push(i + 1);
+                CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
+            }
+            System.Threading.Thread.Sleep(2000);
+            while (stack.IsEmpty == false)
+            {
+                stack.Pop();
+                CreateUMLObjectDiagram(ObjectDiagramFilePath, 100, new[] { stack });
+                System.Threading.Thread.Sleep(2000);
+            }
         }
 
         public static void CreateUMLClassDiagram(string filePath, DiagramCreationFlags diagramCreationFlags, params Type[] types)
