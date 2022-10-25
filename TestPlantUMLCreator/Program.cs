@@ -1,5 +1,4 @@
-﻿using CommonBase.Extensions;
-using CommonBase.Modules.PlantUML;
+﻿using CommonBase.Modules.PlantUML;
 
 namespace TestPlantUMLCreator // Note: actual namespace depends on the project name.
 {
